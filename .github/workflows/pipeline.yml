@@ -50,10 +50,10 @@ jobs:
     needs: [test-frontend, test-backend]
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-java@4
+    - uses: actions/setup-java@v4
       with:
-        java-version: 25
-        distribution: temurin
+        java-version: '25'
+        distribution: 'temurin'
         cache: maven
     - name: Start back
       run: | 
