@@ -17,5 +17,21 @@ jobs:
         java-version: '25'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn verify --file demo/pom.xml
+    - name: Run tests
+      run: mvn test --file demo/pom.xml
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK
+      uses: actions/setup-node@v6.4.0
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: note/package-lock.json
+    - name: Build 
+      run: npm ci
+      working-directory: note
+    - name : Run tests
+      run: npm run tests
+      working-directory: note
