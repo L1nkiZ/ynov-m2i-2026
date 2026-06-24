@@ -19,6 +19,11 @@ jobs:
         cache: maven
     - name: Run tests
       run: mvn test --file demo/pom.xml
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: jacoco-report
+        path: demo/target/site/jacoco
   test-frontend:
     runs-on: ubuntu-latest
     steps:
@@ -35,3 +40,8 @@ jobs:
     - name : Run tests
       run: npm run test
       working-directory: note
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: lcov-report
+        path: note/coverage/lcov-report
