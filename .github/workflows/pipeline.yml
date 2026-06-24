@@ -64,6 +64,9 @@ jobs:
         node-version: '24'
         cache: npm
         cache-dependency-path: note/package-lock.json
+    - name: Build front
+      run: npm ci
+      working-directory: note
     - name: Start front
       run: |
         npm run start &
