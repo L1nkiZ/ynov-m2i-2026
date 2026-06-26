@@ -1,0 +1,20 @@
+services:
+  back:
+    build:
+      context: ./demo
+      dockerfile: Dockerfile.dev
+    ports:
+      - "9999:9000"
+    volumes:
+      - ./demo/src:/app/src
+
+  front:
+    build:
+      context: ./note
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8888:4200"
+    depends_on:
+      - back
+    volumes:
+      - ./note/src:/app/src
